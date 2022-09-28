@@ -1,1 +1,15 @@
 <p>users works!</p>
+<div *ngIf="userlogged != null">
+  <!--Si usuario se logea-->
+
+  <h1>Hola, {{ userlogged }}!</h1>
+
+  <h2>Buscar usuario</h2>
+  Buscar por id: <input type="text" [(ngModel)]="id" />
+  <button (click)="searchUser()">Buscar</button>
+
+  <tr *ngFor="let user of users">
+    <td>{{ user.name }}</td>
+    <td>{{ user.surname }}</td>
+  </tr>
+</div>

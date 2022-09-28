@@ -9,6 +9,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { UsersComponent } from './components/users/users.component';
 import { LoginService } from './services/login.service';
 import { UsersService } from './services/users.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UsersService } from './services/users.service';
     LogoutComponent,
     UsersComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [LoginService, UsersService],
   bootstrap: [AppComponent],
 })
