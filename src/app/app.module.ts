@@ -9,7 +9,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { UsersComponent } from './components/users/users.component';
 import { LoginService } from './services/login.service';
 import { UsersService } from './services/users.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
@@ -22,7 +22,13 @@ import { HomeComponent } from './components/home/home.component';
     HomeComponent,
   ],
 
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [LoginService, UsersService],
   bootstrap: [AppComponent],
 })
