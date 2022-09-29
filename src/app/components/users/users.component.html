@@ -1,15 +1,23 @@
-<p>users works!</p>
-<div *ngIf="userlogged != null">
-  <!--Si usuario se logea-->
+<body>
+  <p>users works!</p>
+  <div *ngIf="userlogged != null">
+    <!--Si usuario se logea-->
 
-  <h1>Hola, {{ userlogged }}!</h1>
+    <h1>Hola, {{ userlogged }}!</h1>
 
-  <h2>Buscar usuario</h2>
-  Buscar por id: <input type="text" [(ngModel)]="id" />
-  <button (click)="searchUser()">Buscar</button>
+    <h2>Buscar usuario</h2>
 
-  <tr *ngFor="let user of users">
-    <td>{{ user.name }}</td>
-    <td>{{ user.surname }}</td>
-  </tr>
-</div>
+    <input
+      type="text"
+      class="form-control me-sm-2"
+      placeholder="Buscar por id"
+      [(ngModel)]="id"
+    />
+    <button (click)="searchUser()">Buscar</button>
+
+    <tr *ngFor="let user of users">
+      <td>{{ user.name }}</td>
+      <td>{{ user.surname }}</td>
+    </tr>
+  </div>
+</body>

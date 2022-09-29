@@ -10,6 +10,7 @@ import { UsersComponent } from './components/users/users.component';
 import { LoginService } from './services/login.service';
 import { UsersService } from './services/users.service';
 import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     SignupComponent,
     LogoutComponent,
     UsersComponent,
+    HomeComponent,
   ],
 
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
