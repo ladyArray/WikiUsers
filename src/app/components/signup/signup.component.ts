@@ -54,17 +54,6 @@ export class SignupComponent implements OnInit {
 
   signUp() {
     if (this.signUpForm.valid) {
-      console.log(
-        'Registro: ' +
-          this.signUpForm.get('email')?.value +
-          ' ' +
-          this.signUpForm.get('password')?.value +
-          ' ' +
-          this.signUpForm.get('name')?.value +
-          ' ' +
-          this.signUpForm.get('surname')?.value
-      );
-
       this.loginService.signUp(this.signUpForm.value).subscribe(() => {
         alert('Registro finalizado');
         this.signUpForm.reset();

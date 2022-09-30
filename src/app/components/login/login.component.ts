@@ -40,14 +40,13 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
-      console.log('Login: ' + this.email + ' ' + this.password);
 
       this.loginService.login(this.loginForm.value).subscribe(
         (response) => {
-          console.log(response);
-          alert('Bienvenido/a!');
-          this.loginForm.reset();
-          this.router.navigate(['users']);
+          sessionStorage.setItem('token', response.accessToken);
+          sessionStorage.setItem('refreshToken', response.refreshToken);
+          sessionStorage.setItem('tokenType', response.tokenType);
+          this.router.navigateByUrl('users');
         },
         (error) => {
           console.error(error.error.message);

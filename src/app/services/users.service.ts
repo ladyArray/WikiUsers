@@ -9,6 +9,10 @@ export class UsersService {
   url: string = 'http://51.38.51.187:5050/api/v1/users';
   headers: HttpHeaders = new HttpHeaders({
     'Content-type': 'application/json',
+    Authorization:
+      sessionStorage.getItem('tokenType') +
+      ' ' +
+      sessionStorage.getItem('token'),
   });
   constructor(private http: HttpClient) {}
 
@@ -20,7 +24,7 @@ export class UsersService {
     return this.http.get(this.url + '/' + id, { headers: this.headers });
   }
 
-  userLogged(me: string) {
-    return this.http.get(this.url + '/' + me, { headers: this.headers });
+  userLogged() {
+    return this.http.get(this.url + '/me', { headers: this.headers });
   }
 }

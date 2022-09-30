@@ -10,7 +10,7 @@ export class LoginService {
   constructor(private http: HttpClient) {}
 
   public login(newLogin: any) {
-    return this.http.post(
+    return this.http.post<any>(
       this.url + '/log-in',
       { email: newLogin.email, password: newLogin.password },
       { headers: this.headers }
@@ -18,7 +18,7 @@ export class LoginService {
   }
 
   public signUp(newUser: any) {
-    return this.http.post(
+    return this.http.post<any>(
       this.url + '/sign-up',
       {
         name: newUser.name,

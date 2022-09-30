@@ -1,9 +1,8 @@
 <body>
-  <p>users works!</p>
   <div *ngIf="userlogged != null">
     <!--Si usuario se logea-->
 
-    <h1>Hola, {{ userlogged }}!</h1>
+    <h1>Hola, {{ userlogged.name }} {{ userlogged.surname }}!</h1>
 
     <h2>Buscar usuario</h2>
 
@@ -13,11 +12,14 @@
       placeholder="Buscar por id"
       [(ngModel)]="id"
     />
+
     <button (click)="searchUser()">Buscar</button>
+    <button (click)="resetSearch()">Rese-T</button>
 
     <tr *ngFor="let user of users">
       <td>{{ user.name }}</td>
       <td>{{ user.surname }}</td>
+      <td>{{ user.id }}</td>
     </tr>
   </div>
 </body>
