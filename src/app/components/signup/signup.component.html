@@ -1,1 +1,77 @@
-<p>signup works!</p>
+<form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+  <div class="mb-3">
+    <label class="form-label" for="inputDefault">Nombre</label>
+    <input
+      type="text"
+      formControlName="name"
+      class="form-control"
+      id="inputName"
+      required
+      (focus)="nameInvalid = true"
+    />
+
+    <div
+      *ngIf="signUpForm.get('name')?.hasError('required')"
+      [ngStyle]="{ color: 'red' }"
+    >
+      *Este campo es obligatorio
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="inputDefault">Apellido</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="surname"
+      id="inputSurname"
+      (focus)="surnameInvalid = true"
+    />
+
+    <div
+      *ngIf="signUpForm.get('surname')?.hasError('required')"
+      [ngStyle]="{ color: 'red' }"
+    >
+      *Este campo es obligatorio
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email</label>
+    <input
+      type="email"
+      formControlName="email"
+      id="email"
+      (focus)="emailInvalid = true"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+    />
+
+    <div
+      *ngIf="signUpForm.get('email')?.hasError('required')"
+      [ngStyle]="{ color: 'red' }"
+    >
+      *Este campo es obligatorio
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Contrasena:</label>
+    <input
+      type="password"
+      formControlName="password"
+      id="password"
+      (focus)="passwordInvalid = true"
+      class="form-control"
+      id="exampleInputPassword1"
+    />
+
+    <div
+      *ngIf="signUpForm.get('password')?.hasError('required')"
+      [ngStyle]="{ color: 'red' }"
+    >
+      *Este campo es obligatorio
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form>

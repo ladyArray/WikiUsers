@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm">
+<form [formGroup]="loginForm" (ngSubmit)="login()">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email</label>
     <input
@@ -9,11 +9,14 @@
       class="form-control"
       id="exampleInputEmail1"
       aria-describedby="emailHelp"
+      required
     />
-    <div *ngIf="emailInvalid">
-      <div *ngIf="email?.errors?.['required']" [ngStyle]="{ color: 'red' }">
-        *Este campo es obligatorio
-      </div>
+
+    <div
+      *ngIf="loginForm.get('email')?.hasError('required')"
+      [ngStyle]="{ color: 'red' }"
+    >
+      *Este campo es obligatorio
     </div>
   </div>
   <div class="mb-3">
@@ -25,18 +28,22 @@
       (focus)="passwordInvalid = true"
       class="form-control"
       id="exampleInputPassword1"
+      required
     />
-    <div *ngIf="passwordInvalid">
-      <div *ngIf="password?.errors?.['required']" [ngStyle]="{ color: 'red' }">
-        *Este campo es obligatorio
-      </div>
+
+    <div
+      *ngIf="loginForm.get('password')?.hasError('required')"
+      [ngStyle]="{ color: 'red' }"
+    >
+      *Este campo es obligatorio
     </div>
   </div>
-  <button
-    (click)="login(); emailInvalid = true; passwordInvalid = true"
+  <!-- <button
+   (click)="login(); emailInvalid = true; passwordInvalid = true"
     type="submit"
     class="btn btn-primary"
   >
     Enviar
-  </button>
+  </button>-->
+  <button type="submit" class="btn btn-primary">Enviar</button>
 </form>

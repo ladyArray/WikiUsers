@@ -7,11 +7,23 @@ import { SignupComponent } from './components/signup/signup.component';
 import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'logout', component: LogoutComponent },
-  { path: 'users', component: UsersComponent },
-  { path: 'signup', component: SignupComponent },
+  { path: '', title: 'WikiUsers - homepage', component: HomeComponent },
+  {
+    path: 'login',
+    title: 'WikiUsers - Iniciar Sesion',
+    component: LoginComponent,
+  },
+  {
+    path: 'logout',
+    title: 'WikiUsers - Cerrar Sesion',
+    component: LogoutComponent,
+  },
+  { path: 'users', title: 'WikiUsers - Usuarios', component: UsersComponent },
+  {
+    path: 'signup',
+    title: 'WikiUsers - Registrarse',
+    component: SignupComponent,
+  },
 ];
 
 @NgModule({

@@ -7,27 +7,25 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class LoginService {
   url: string = 'http://51.38.51.187:5050/api/v1/auth';
   headers = new HttpHeaders({ 'Content-type': 'application/json' });
-
   constructor(private http: HttpClient) {}
 
-  public login(newUser: any): any {
-    console.log('creating user: ' + newUser.email + ' ' + newUser.password);
-    return true;
-    /*
-    return this.http.post( this.apiURL + "/auth/log-in",
-                          newUser,
-                          { "headers": this.headers } );*/
+  public login(newLogin: any) {
+    return this.http.post(
+      this.url + '/log-in',
+      { email: newLogin.email, password: newLogin.password },
+      { headers: this.headers }
+    );
   }
 
-  public signup(
-    name: string,
-    surname: string,
-    email: string,
-    password: string
-  ) {
+  public signUp(newUser: any) {
     return this.http.post(
       this.url + '/sign-up',
-      { name: name, surname: surname, email: email, password: password },
+      {
+        name: newUser.name,
+        surname: newUser.surname,
+        email: newUser.email,
+        password: newUser.password,
+      },
       { headers: this.headers }
     );
 

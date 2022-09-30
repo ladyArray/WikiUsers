@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,17 +9,26 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  loginForm!: FormGroup;
   emailInvalid: boolean = false;
   passwordInvalid: boolean = false;
 
-  loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
-  });
+  constructor(
+    private loginService: LoginService,
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) {}
 
-  constructor(private loginService: LoginService) {}
+  ngOnInit(): void {
+    this.createLoginForm();
+  }
 
-  ngOnInit(): void {}
+  createLoginForm(): void {
+    this.loginForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+  }
 
   public get email() {
     return this.loginForm.get('email');
@@ -30,19 +40,19 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
-      console.log(
-        'Login: ' +
-          this.loginForm.get('email')?.value +
-          ' ' +
-          this.loginForm.get('password')?.value
+      console.log('Login: ' + this.email + ' ' + this.password);
+
+      this.loginService.login(this.loginForm.value).subscribe(
+        (response) => {
+          console.log(response);
+          alert('Bienvenido/a!');
+          this.loginForm.reset();
+          this.router.navigate(['users']);
+        },
+        (error) => {
+          console.error(error.error.message);
+        }
       );
-      this.loginService.login(this.loginForm.value).then(() => {
-        alert('Bienvenido/a!');
-        this.loginForm.reset();
-      }),
-        (exception: any) => {
-          console.log(exception);
-        };
     }
   }
 }
