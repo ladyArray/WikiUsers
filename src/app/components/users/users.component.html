@@ -8,6 +8,53 @@
         <a class="nav-link" routerLink="logout">Logout</a>
       </button>
     </div>
+
+    <form [formGroup]="updateUserForm" (ngSubmit)="updateUser()">
+      <div class="mb-3">
+        <label class="form-label" for="inputDefault">Nombre</label>
+        <input
+          type="text"
+          formControlName="name"
+          class="form-control"
+          id="inputName"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="inputDefault">Apellido</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="surname"
+          id="inputSurname"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input
+          type="email"
+          formControlName="email"
+          id="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInput" class="form-label">ID:</label>
+        <input
+          type="text"
+          formControlName="ID"
+          id="ID"
+          class="form-control"
+          id="exampleInputPassword1"
+        />
+      </div>
+      <button type="submit" class="btn btn-success">Actualizar</button>
+    </form>
+
     <div class="input-group">
       <div class="form-outline">
         <input
@@ -18,7 +65,8 @@
           [(ngModel)]="id"
         />
       </div>
-      <button type="button" class="btn btn-success" (click)="searchUser()">
+
+      <button type="button" class="btn btn-primary" (click)="searchUser()">
         Buscar
       </button>
       <button type="button" class="btn btn-secondary" (click)="resetSearch()">

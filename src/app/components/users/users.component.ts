@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import { LogoutComponent } from '../logout/logout.component';
 
@@ -10,12 +11,29 @@ import { LogoutComponent } from '../logout/logout.component';
 export class UsersComponent implements OnInit {
   users: any = [];
   name: string = '';
-  id: string = '';
+  id: any;
+  newId: any = [];
   userlogged: any;
-  constructor(private UsersService: UsersService) {}
+  updateUserForm!: FormGroup;
+  emailInvalid: boolean = false;
+  IDInvalid: boolean = false;
+  constructor(
+    private UsersService: UsersService,
+    private formBuilder: FormBuilder
+  ) {}
   ngOnInit(): void {
     this.getAllUsers();
     this.getMyUser();
+    this.updatingUserForm();
+  }
+
+  updatingUserForm(): void {
+    this.updateUserForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      surname: ['', Validators.required],
+      email: ['', Validators.required],
+      ID: ['', Validators.required],
+    });
   }
 
   getMyUser(): void {
@@ -37,6 +55,14 @@ export class UsersComponent implements OnInit {
   resetSearch() {
     this.getAllUsers();
     this.id = '';
+  }
+
+  updateUser() {
+    this.UsersService.update(this.id, this.updatingUserForm).subscribe(
+      (item) => {
+        this.id = [item];
+      }
+    );
   }
 
   deleteUser() {

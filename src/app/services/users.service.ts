@@ -28,11 +28,7 @@ export class UsersService {
     return this.http.get(this.url + '/me', { headers: this.headers });
   }
 
-  create(id: string) {
-    return this.http.post(this.url + '/' + id, { headers: this.headers });
-  }
-
-  update(id: string, data: any) {
+  update(id: string, item: any) {
     return this.http.put(this.url + '/' + id, { headers: this.headers });
   }
 

@@ -1,0 +1,7 @@
+body {
+  margin: 1em 4em 1em 4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
