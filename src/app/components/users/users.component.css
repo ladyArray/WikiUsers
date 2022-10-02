@@ -1,1 +1,29 @@
+body {
+  margin: 1em 4em 0em 4em;
+}
 
+table {
+  display: grid;
+  grid-template-columns: repeat(4);
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.table-primary {
+  font-size: 1.2em;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-danger {
+  float: right;
+}
+
+.input-group {
+  display: flex;
+}
+
+input{
+  width: 40rem;
+}

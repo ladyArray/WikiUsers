@@ -27,4 +27,16 @@ export class UsersService {
   userLogged() {
     return this.http.get(this.url + '/me', { headers: this.headers });
   }
+
+  create(id: string) {
+    return this.http.post(this.url + '/' + id, { headers: this.headers });
+  }
+
+  update(id: string, data: any) {
+    return this.http.put(this.url + '/' + id, { headers: this.headers });
+  }
+
+  delete(id: string) {
+    return this.http.delete(this.url + '/' + id, { headers: this.headers });
+  }
 }

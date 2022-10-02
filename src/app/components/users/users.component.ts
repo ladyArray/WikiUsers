@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
+import { LogoutComponent } from '../logout/logout.component';
 
 @Component({
   selector: 'app-users',
@@ -36,5 +37,11 @@ export class UsersComponent implements OnInit {
   resetSearch() {
     this.getAllUsers();
     this.id = '';
+  }
+
+  deleteUser() {
+    this.UsersService.delete(this.id).subscribe((item) => {
+      this.id = '';
+    });
   }
 }

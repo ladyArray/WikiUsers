@@ -1,25 +1,49 @@
 <body>
   <div *ngIf="userlogged != null">
     <!--Si usuario se logea-->
+    <div class="header ms-auto me-auto">
+      <h1>Hola, {{ userlogged.name }} {{ userlogged.surname }}!</h1>
 
-    <h1>Hola, {{ userlogged.name }} {{ userlogged.surname }}!</h1>
-
-    <h2>Buscar usuario</h2>
-
-    <input
-      type="text"
-      class="form-control me-sm-2"
-      placeholder="Buscar por id"
-      [(ngModel)]="id"
-    />
-
-    <button (click)="searchUser()">Buscar</button>
-    <button (click)="resetSearch()">Rese-T</button>
-
-    <tr *ngFor="let user of users">
-      <td>{{ user.name }}</td>
-      <td>{{ user.surname }}</td>
-      <td>{{ user.id }}</td>
-    </tr>
+      <button type="button" class="btn btn-danger">
+        <a class="nav-link" routerLink="logout">Logout</a>
+      </button>
+    </div>
+    <div class="input-group">
+      <div class="form-outline">
+        <input
+          type="search"
+          id="form1"
+          class="form-control me-sm-2"
+          placeholder="Buscar por id"
+          [(ngModel)]="id"
+        />
+      </div>
+      <button type="button" class="btn btn-success" (click)="searchUser()">
+        Buscar
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="resetSearch()">
+        Reset
+      </button>
+      <button type="button" class="btn btn-danger" (click)="deleteUser()">
+        Borrar
+      </button>
+    </div>
+    <table class="table table-hover">
+      <thead></thead>
+      <tbody>
+        <tr class="table-primary">
+          <th scope="row">Nombre</th>
+          <td>Apellido</td>
+          <td>Email</td>
+          <td>ID</td>
+        </tr>
+        <tr class="table-secondary" *ngFor="let user of users">
+          <td>{{ user.name }}</td>
+          <td>{{ user.surname }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.id }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </body>
