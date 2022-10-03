@@ -17,6 +17,13 @@ export class LoginService {
     );
   }
 
+  public logout(oldLogin: any) {
+    return this.http.post<any>(
+      this.url + '/log-in',
+      { headers: this.headers }
+    );
+  }
+
   public signUp(newUser: any) {
     return this.http.post<any>(
       this.url + '/sign-up',
@@ -28,7 +35,5 @@ export class LoginService {
       },
       { headers: this.headers }
     );
-
-    //EMPTY_RESPONSE => https://ncu.libanswers.com/faq/221768
   }
 }

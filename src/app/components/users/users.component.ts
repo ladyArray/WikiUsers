@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import { LogoutComponent } from '../logout/logout.component';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-users',
@@ -11,8 +12,9 @@ import { LogoutComponent } from '../logout/logout.component';
 export class UsersComponent implements OnInit {
   users: any = [];
   name: string = '';
-  id: any;
-  newId: any = [];
+  id: string = '';
+  surname: string = '';
+  email: string = '';
   userlogged: any;
   updateUserForm!: FormGroup;
   emailInvalid: boolean = false;
@@ -32,7 +34,7 @@ export class UsersComponent implements OnInit {
       name: ['', Validators.required],
       surname: ['', Validators.required],
       email: ['', Validators.required],
-      ID: ['', Validators.required],
+      id: ['', Validators.required],
     });
   }
 
@@ -57,17 +59,21 @@ export class UsersComponent implements OnInit {
     this.id = '';
   }
 
-  updateUser() {
-    this.UsersService.update(this.id, this.updatingUserForm).subscribe(
-      (item) => {
-        this.id = [item];
-      }
-    );
-  }
-
   deleteUser() {
     this.UsersService.delete(this.id).subscribe((item) => {
       this.id = '';
+      this.getAllUsers();
+    });
+  }
+
+  updateUser() {
+    console.log(this.id);
+    this.UsersService.update(
+      this.updateUserForm.value.id,
+      this.updateUserForm.value
+    ).subscribe((data: any) => {
+      this.users.id = this.updateUserForm.value.id;
+      this.getAllUsers();
     });
   }
 }

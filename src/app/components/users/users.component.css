@@ -21,11 +21,18 @@ table {
 }
 
 .input-group {
+  margin-top: 1em;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 input{
+
+  display: flex;
+  flex-direction: row;
   width: 40rem;
+
 }
 
 form {
