@@ -1,12 +1,14 @@
 body {
   margin: 1em 4em 1em 4em;
   display: flex;
+  width: 85vw;
+  height: 82vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.buttons{
+.buttons {
   display: flex;
-  gap:1em;
+  gap: 1em;
 }

@@ -1,10 +1,9 @@
 body {
-  margin: 1em 4em 0em 4em;
+  margin: 0em 4em 0em 4em;
 }
 
 header,
 footer {
 }
 router-outlet {
-
 }

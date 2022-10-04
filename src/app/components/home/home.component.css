@@ -1,5 +1,14 @@
 body {
   margin: 1em 4em 0em 4em;
+  width: 85vw;
+  height: 82vh;
+  display: grid;
+}
+
+h1 {
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
 
 form {

@@ -1,49 +1,44 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()">
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email</label>
-    <input
-      type="email"
-      formControlName="email"
-      id="email"
-      (focus)="emailInvalid = true"
-      class="form-control"
-      id="exampleInputEmail1"
-      aria-describedby="emailHelp"
-      required
-    />
+<body>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email</label>
+      <input
+        type="email"
+        formControlName="email"
+        id="email"
+        (focus)="emailInvalid = true"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        required
+      />
 
-    <div
-      *ngIf="loginForm.get('email')?.hasError('required')"
-      [ngStyle]="{ color: 'red' }"
-    >
-      *Este campo es obligatorio
+      <div
+        *ngIf="loginForm.get('email')?.hasError('required')"
+        [ngStyle]="{ color: 'red' }"
+      >
+        *Este campo es obligatorio
+      </div>
     </div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Contrasena:</label>
-    <input
-      type="password"
-      formControlName="password"
-      id="password"
-      (focus)="passwordInvalid = true"
-      class="form-control"
-      id="exampleInputPassword1"
-      required
-    />
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Contrasena:</label>
+      <input
+        type="password"
+        formControlName="password"
+        id="password"
+        (focus)="passwordInvalid = true"
+        class="form-control"
+        id="exampleInputPassword1"
+        required
+      />
 
-    <div
-      *ngIf="loginForm.get('password')?.hasError('required')"
-      [ngStyle]="{ color: 'red' }"
-    >
-      *Este campo es obligatorio
+      <div
+        *ngIf="loginForm.get('password')?.hasError('required')"
+        [ngStyle]="{ color: 'red' }"
+      >
+        *Este campo es obligatorio
+      </div>
     </div>
-  </div>
-  <!-- <button
-   (click)="login(); emailInvalid = true; passwordInvalid = true"
-    type="submit"
-    class="btn btn-primary"
-  >
-    Enviar
-  </button>-->
-  <button type="submit" class="btn btn-primary">Enviar</button>
-</form>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+</body>

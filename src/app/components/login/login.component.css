@@ -1,6 +1,8 @@
-* {
-  margin-top: 0.2em;
-  margin-bottom: 0.2em;
+body {
+  margin: 1em 4em 0em 4em;
+  width: 85vw;
+  height: 82vh;
+  display: grid;
 }
 
 form {
