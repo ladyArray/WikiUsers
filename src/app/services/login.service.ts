@@ -17,7 +17,7 @@ export class LoginService {
     );
   }
 
-  public logout(oldLogin: any) {
+  public logout() {
     return this.http.post<any>(
       this.url + '/log-in',
       { headers: this.headers }

@@ -74,6 +74,7 @@ export class UsersComponent implements OnInit {
     ).subscribe((data: any) => {
       this.users.id = this.updateUserForm.value.id;
       this.getAllUsers();
+      this.updateUserForm.reset();
     });
   }
 }

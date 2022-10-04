@@ -33,7 +33,7 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
   ],
-  providers: [LoginService, UsersService],
+  providers: [LoginService, UsersService, UsersComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

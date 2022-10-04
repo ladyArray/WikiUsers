@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { LoginService } from 'src/app/services/login.service';
+import { UsersService } from 'src/app/services/users.service';
+import { LoginComponent } from '../login/login.component';
+import { UsersComponent } from '../users/users.component';
 
 @Component({
   selector: 'app-logout',
@@ -9,16 +11,25 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./logout.component.css'],
 })
 export class LogoutComponent implements OnInit {
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(
+    private LoginService: LoginService,
+    private router: Router,
+    //private LoginComponent: LoginComponent,
+    private UsersComponent: UsersComponent // private UsersService:UsersService
+  ) {}
 
   ngOnInit(): void {}
 
   logout() {
-    this.loginService.logout(this.logout).subscribe((response) => {
-      sessionStorage.removeItem(response.accessToken);
-      sessionStorage.removeItem(response.refreshToken);
-      sessionStorage.removeItem(response.tokenType);
-      this.router.navigateByUrl('home');
-    });
+    this.UsersComponent.userlogged = null;
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('refreshToken');
+    sessionStorage.removeItem('tokenType');
+    //sessionStorage.clear();
+    this.router.navigateByUrl('/');
+  }
+
+  return() {
+    this.router.navigateByUrl('users');
   }
 }
