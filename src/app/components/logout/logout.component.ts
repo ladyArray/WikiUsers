@@ -21,7 +21,7 @@ export class LogoutComponent implements OnInit {
   ngOnInit(): void {}
 
   logout() {
-    this.UsersComponent.userlogged = null;
+    this.UsersComponent.userlogged = '';
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('refreshToken');
     sessionStorage.removeItem('tokenType');
